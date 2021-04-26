@@ -34,11 +34,13 @@ public class ProgressDownload extends Thread {
 				Thread.sleep(2000);
 			}
 			this.progressBarDownload.setForeground(Color.GREEN);	
-			this.words.stop();
+			this.words.suspend();
 
 		}catch(InterruptedException ex) {
 			ex.printStackTrace();
 		}	
+		
+		Thread.currentThread().suspend();
 		
 	}
 

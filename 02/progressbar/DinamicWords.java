@@ -29,7 +29,6 @@ public class DinamicWords extends Thread {
 		}catch(InterruptedException ex) {
 			ex.printStackTrace();
 		}
-
 	}
 	
 	

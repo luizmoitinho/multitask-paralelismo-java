@@ -53,15 +53,15 @@ public class Application extends JFrame {
 		getContentPane().add(progressDownload.get());
 		
 		
-		
-		
 		JButton btnStart = new JButton("Iniciar");
 		btnStart.addMouseListener(new MouseAdapter() {
 			@SuppressWarnings("deprecation")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				progressDownload.start();
-	
+				if(progressDownload.isAlive())
+					progressDownload.suspend();
+				else
+					progressDownload.start();
 			}
 		});
 		btnStart.addActionListener(new ActionListener() {
