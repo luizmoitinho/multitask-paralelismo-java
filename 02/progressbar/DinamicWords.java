@@ -26,11 +26,12 @@ public class DinamicWords extends Thread {
 				Thread.sleep(1500);
 				this.lblWords.setText("Download ...");
 			}
-		}catch(InterruptedException e) {
-			System.out.println(e);
+		}catch(InterruptedException ex) {
+			ex.printStackTrace();
 		}
-		
+
 	}
+	
 	
 	
 }

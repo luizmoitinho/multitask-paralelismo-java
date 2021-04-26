@@ -46,11 +46,13 @@ public class Application extends JFrame {
 		lblSimulaoDeDownload.setBounds(126, 12, 190, 32);
 		getContentPane().add(lblSimulaoDeDownload);
 		
-		ProgressBarDownload progressBarDownload =  new ProgressBarDownload();
-		getContentPane().add(progressBarDownload.get());
-		
 		DinamicWords words = new DinamicWords();
 		getContentPane().add(words.get());
+		
+		ProgressDownload progressDownload =  new ProgressDownload(words);
+		getContentPane().add(progressDownload.get());
+		
+		
 		
 		
 		JButton btnStart = new JButton("Iniciar");
@@ -58,8 +60,8 @@ public class Application extends JFrame {
 			@SuppressWarnings("deprecation")
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				progressBarDownload.start();
-				words.start();				
+				progressDownload.start();
+	
 			}
 		});
 		btnStart.addActionListener(new ActionListener() {
@@ -71,19 +73,10 @@ public class Application extends JFrame {
 		getContentPane().add(btnStart);
 		
 		
-		if(progressBarDownload.isDownloaded())
-			words.stop();
+	
 
 	
 	}
 
-	
-
-	
-	/* TODO:
-	 * [ ] Criar Classe que manipula o progressBar
-	 * [ ] Criar classe que manipula o label
-	 
-	 */
 	
 }

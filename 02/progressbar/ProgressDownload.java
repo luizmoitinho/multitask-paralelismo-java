@@ -4,16 +4,19 @@ import java.awt.Color;
 
 import javax.swing.JProgressBar;
 
-public class ProgressBarDownload extends Thread {
+public class ProgressDownload extends Thread {
 	
 	private JProgressBar progressBarDownload;
-	private Boolean isDownloaded;
-	public ProgressBarDownload()
+	private DinamicWords words;
+	
+	public ProgressDownload(DinamicWords words)
 	{
+		this.words = words;
+		
 		this.progressBarDownload = new JProgressBar();
 		this.progressBarDownload.setBounds(35, 126, 370, 14);
 		
-		this.isDownloaded = false;
+		
 	}
 	
 	public JProgressBar get() {
@@ -25,21 +28,21 @@ public class ProgressBarDownload extends Thread {
 		
 		try {
 			Thread.currentThread();
+			this.words.start();
 			for (int i = 0; i <= 100; i+=10 ) {
 				this.progressBarDownload.setValue(i);
-				
 				Thread.sleep(2000);
 			}
-			this.progressBarDownload.setForeground(Color.GREEN);
-			this.isDownloaded = true;
-			
-		}catch(InterruptedException e) {
-			System.out.println(e);
+			this.progressBarDownload.setForeground(Color.GREEN);	
+			this.words.stop();
+
+		}catch(InterruptedException ex) {
+			ex.printStackTrace();
 		}	
+		
 	}
+
 	
-	public Boolean isDownloaded() {
-		return this.isDownloaded ;
-	}
+
 	
 }
