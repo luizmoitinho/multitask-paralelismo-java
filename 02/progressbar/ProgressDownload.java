@@ -35,7 +35,7 @@ public class ProgressDownload extends Thread {
 			}
 			this.progressBarDownload.setForeground(Color.GREEN);	
 			this.words.suspend();
-
+			
 		}catch(InterruptedException ex) {
 			ex.printStackTrace();
 		}	
