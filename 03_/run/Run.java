@@ -1,6 +1,6 @@
 package run;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 public class Run {
 	
@@ -8,6 +8,8 @@ public class Run {
 	
 	public static int distance;
 	
+	public static ArrayList<String> podio;
+ 	
 	private int numRunners;
 	
 	private Frogs[] frogs;
@@ -18,8 +20,9 @@ public class Run {
 	
 	public Run(String name, int distance, int numRunners) {
 		this.name = name;
-		this.distance = distance > 0 ? distance : 0;
+		Run.distance = distance > 0 ? distance : 0;
 		this.numRunners = numRunners >= 1 ? numRunners : 1 ;
+		Run.podio = new ArrayList<String>();
 		
 		this.prepareRunners();
 	}
@@ -28,7 +31,7 @@ public class Run {
 		this.frogs = new Frogs[this.numRunners];
 		
 		for(int i = 0; i < this.numRunners ; i++ ) {
-			this.frogs[i] = new Frogs("Frog #"+i);
+			this.frogs[i] = new Frogs("Frog #"+(i+1));
 		}
 		
 	}
@@ -37,10 +40,29 @@ public class Run {
 		for(int i = 0; i < this.numRunners; i++) {
 			this.frogs[i].start();
 		}
-		System.out.println("##### Colocação #####");
+		
+		while(!end());
+		System.out.println("\n\n##### Pódio ######");
+		this.showPodio();
+		
+		
+	}
+	
+	public Boolean end() {
+		for(int i = 0; i < this.numRunners; i++)
+			if(this.frogs[i].isAlive())
+				return false;
+		
+		return true;
+	}
+
+	public void showPodio() {
+		for(int i = 0 ; i < Run.podio.size(); i++ )
+			System.out.println((i+1)+"º - "+Run.podio.get(i));
 	}
 	
 	public void showRunners() {
+	
 		for(int i = 0; i < this.numRunners ; i++ ) 
 			System.out.println(this.frogs[i].toString());
 			

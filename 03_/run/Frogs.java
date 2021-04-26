@@ -25,11 +25,9 @@ public class Frogs extends Thread{
 			this.newJump();
 			if(this.getCurrentPosition() == Run.distance)
 				break;
-			
 		}
-
-		this.suspend();
-		
+		Run.podio.add(this.getName_());	
+		this.stop();
 	}
 	
 	public String getName_() {
