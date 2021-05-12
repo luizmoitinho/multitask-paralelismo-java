@@ -36,7 +36,11 @@ public class Run {
 		
 	}
 	
+	
+	
+	
 	public void start() {
+		
 		for(int i = 0; i < this.numRunners; i++) {
 			this.frogs[i].start();
 		}
